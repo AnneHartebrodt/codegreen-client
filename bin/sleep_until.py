@@ -1,4 +1,4 @@
-"""Usage: run_boostdiff.py -c FILE -d FILE -o FOLDER
+"""Usage: sleep_until.py -s <hours> -m <minutes> -p <percent_renewable> -f <hard_finish_time> -c <area_code> -a <authorization_header> 
 
 Wrapper script taking as input the case and control files.
 
@@ -20,14 +20,17 @@ import time
 from datetime import timedelta, datetime, timezone
 import functools
 import pandas as pd
+from carbonaware.utils import sleep_until
 
 
-AUTHORIZATION_HEADER = {'Authorization': 
-           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODAwOTcwMTIsInN1YiI6IjMxOThmMjVlLWRhNWEtNDI3ZC1iMDQwLWJlNDM4MDA1YzQ1NSJ9.rWR75a__ArEqeD28AorSLsOXHzO_iXVbjCrnzH2eBb4'}
 
-from client import sleep_until
-
-def __main__():
-    arguments = docopt(__doc__, version='Boostdiff postprocessing')
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version='0.1')
     print(arguments)
-    sleep_until(arguments['--hours'], arguments['--minutes'], arguments['--percent_renewable'], arguments['--hard_finish_time'], arguments['--area_code'], arguments['--authorization_header'])
+    print('Using carbonaware')
+    d = "2023-06-07 18:00"
+    date_format = "%Y-%m-%d %H:%M"
+    finish_time = datetime.strptime( d,date_format)
+
+
+    sleep_until(arguments['--hours'], arguments['--minutes'], arguments['--percent_renewable'], finish_time, arguments['--area_code'], arguments['--authorization_header'])
