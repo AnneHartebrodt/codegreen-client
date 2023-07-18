@@ -20,7 +20,6 @@ something that is not yet done on a broader scale. Furthermore, it can help you 
 operations. In fact you can generate more thant one API key and monitor the carbon footprint of your application by scope. 
 
 ## Installation
-
 Now, that you have your API key, you can download and install the carbon-aware-API client package. We 
 recommend using a virtual environment such as conda and installing the package from pip or conda.
 
@@ -32,4 +31,4 @@ conda install greenerai-client
 And that's it! Head over to the next section <project:./quickstart.md> to find out how to make your code carbon-aware in one line!
 
 
-:A reference from outside: 
+

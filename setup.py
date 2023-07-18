@@ -19,6 +19,9 @@ INSTALL_REQUIRES = [
     "pandas",
     "numpy",
     "sphinx",
+    "codecarbon",
+    "myst_parser"
+    
 ]
 EXTRAS_REQUIRE = {
     "dev": [
@@ -37,7 +40,7 @@ EXTRAS_REQUIRE = {
 }
 
 setup(
-    name="carbonaware",
+    name="code green",
     description=DESCRIPTION,
     long_description=README,
     long_description_content_type="text/markdown",
@@ -49,7 +52,7 @@ setup(
     license="MIT",
     url="git@github.com:AnneHartebrodt/greenerai-client.git",
     project_urls=PROJECT_URLS,
-    packages=['carbonaware'],
+    packages=['codegreen'],
     python_requires=">=3.6",
     install_requires=INSTALL_REQUIRES,
     extras_require=EXTRAS_REQUIRE,
