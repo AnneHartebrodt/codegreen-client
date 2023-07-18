@@ -7,7 +7,7 @@ This repository contains the source code for the codegreen python client. For mo
 ##
 ## Functionalities
 This package is designed to make timeshifting computations easy. They main functionalities are
-1. Providing python decorators to timeshift, monitor and report the carbon footprint of computation. The functionalities can also 
+1. Providing python decorators to timeshift, monitor and report the carbon footprint of computation. The functionalities can of course also be used indvidually.
 
 2. Provide workflow interfaces (for nextflow, and potential other frameworks, such as Pytorch, etc)
 The workflow interfaces should allow the same functionalitities as in 1) but streamlines to work in a copy-paste manner with the workflow manager.
