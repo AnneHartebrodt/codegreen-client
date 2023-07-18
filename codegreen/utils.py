@@ -63,7 +63,8 @@ def get_configuration(experiment_name=None):
             if 'api_endpoint' not in d.keys():
                 raise ConfigNotFoundException('You must specify at least the API url in an environment file called .codegreen.config')
             for key in CONFIG_NUMERIC:
-                d[key] = float(d[key])
+                if key in d.keys():
+                    d[key] = float(d[key])
             if 'area_code' in d:
                 d['area_code'] = d['area_code'].split(';')
             return d
@@ -101,18 +102,17 @@ def write_config_file(experiment_name,
     """
     # get default configuration
 
-    
     config = get_configuration(experiment_name=experiment_name)
+
 
     # update relevant fields
     if experiment_name is None:
         config['experiment_name'] = f"experiment_{str(time.now().timestamp())}".format
-        if op.exists(f".{experiment_name}.codegreen.config") and overwrite==False:
-            return True
     else:
-        if op.exists(f".{experiment_name}.codegreen.config") and overwrite==False:
+        if (op.exists(f".{experiment_name}.codegreen.config") and not overwrite):
             return True
         config['experiment_name'] = experiment_name
+    
     if allowed_delay_hours is not None:
         config['allowed_delay_hours'] = allowed_delay_hours
     if codecarbon_logfile is not None:
