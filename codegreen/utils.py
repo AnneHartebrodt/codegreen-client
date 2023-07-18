@@ -63,7 +63,9 @@ def get_configuration(experiment_name=None):
             if 'api_endpoint' not in d.keys():
                 raise ConfigNotFoundException('You must specify at least the API url in an environment file called .codegreen.config')
             for key in CONFIG_NUMERIC:
-                d[key] = float(d[key])                
+                d[key] = float(d[key])
+            if 'area_code' in d:
+                d['area_code'] = d['area_code'].split(';')
             return d
     else:
         try:
@@ -88,7 +90,7 @@ def write_config_file(experiment_name,
 
     :param experiment_name: The name of the experiment
     :param codecarbon_filename: Name of the codecarbon logfile
-    :param area_code: The area code
+    :param area_code: The area codes as a list
     :param estimated_runtime_hours: Estimated runtime in hours
     :param estimated_runtime_minutes: estimated run time in minutes
     :param percent_renewable: requested percentage of renewables
@@ -118,8 +120,9 @@ def write_config_file(experiment_name,
     if nextflow_logfile is not None:
         logger.warning("Changing the name of the emission file. Call track_emissions with the correct name")
         config['nextflow_logfile'] = nextflow_logfile
+
     if area_code is not None:
-        config['area_code'] = area_code
+        config['area_code'] = ';'.join(area_code)
     if estimated_runtime_hours is not None:
         config['estimated_runtime_hours'] = estimated_runtime_hours
     if estimated_runtime_minutes is not None:

@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "code green"
+name = "codegreen"
 version = "0.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Anne Hartebrodt", email="anne.hartebrodt@fau.de" },
 ]
-description = "A small example package"
+description = "Codegreen -- make your computations carbon-aware"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://codegreen.world"
+"Bug Tracker" = "https://github.com/AnneHartebrodt/codegreen-client/issues"
