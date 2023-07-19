@@ -62,3 +62,5 @@ source_suffix = {
     '.txt': 'markdown',
     '.md': 'markdown',
 }
+
+html_theme = 'alabaster'

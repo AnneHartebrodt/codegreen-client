@@ -20,9 +20,7 @@ INSTALL_REQUIRES = [
     "numpy",
     "codecarbon",
     "sphinx",
-    "myst_parser"
-
-    
+    "myst_parser"    
 ]
 EXTRAS_REQUIRE = {
     "dev": [
