@@ -6,7 +6,8 @@
 
 First, you need to set up an account and generate an API key to use the carbon-aware-API.
 
-You can do this on our website at: 
+You can do this on our website at: https://codegreen.world/
+
 Simply sign up with your email address, create a password and then click on the 'Request API Key' button
 in the navigation bar. This will lead you to different page, where you can enter a name for your project
 and click submit. And that's it.
