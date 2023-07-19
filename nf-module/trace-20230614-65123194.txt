@@ -1,7 +1,0 @@
-task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
-1	33/d640c5	284665	SPLITLETTERS_two (1)	COMPLETED	0	2023-06-14 18:05:24.204	44ms	3ms	123.1%	0	0	77.3 KB	213 B
-2	ed/7aef7f	284678	SPLITLETTERS_one (1)	COMPLETED	0	2023-06-14 18:05:24.212	56ms	3ms	123.1%	0	0	77.3 KB	213 B
-5	98/38a27e	284822	TIMESHIFT_one (1)	FAILED	1	2023-06-14 18:05:24.286	2m	2m	-	-	-	-	-
-6	e7/c03152	284827	TIMESHIFT_one (2)	FAILED	1	2023-06-14 18:05:24.291	2m	2m	-	-	-	-	-
-3	0d/dad768	284844	TIMESHIFT_two (1)	FAILED	1	2023-06-14 18:05:24.296	2m	2m	-	-	-	-	-
-4	47/e85efe	284868	TIMESHIFT_two (2)	FAILED	1	2023-06-14 18:05:24.301	2m	2m	-	-	-	-	-
