@@ -20,7 +20,7 @@ INSTALL_REQUIRES = [
     "numpy",
     "codecarbon",
     "sphinx",
-    "myst_parser"    
+    "myst-parser"    
 ]
 EXTRAS_REQUIRE = {
     "dev": [
@@ -36,7 +36,7 @@ EXTRAS_REQUIRE = {
         "pytest-flask",
         "tox",
         "sphinx",
-        "myst_parser"
+        "myst-parser"
     ]
 }
 
