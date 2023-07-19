@@ -1,2 +1,7 @@
+setuptools>=61.0   
+requests
+pandas
+numpy
+codecarbon
 sphinx
 myst_parser
