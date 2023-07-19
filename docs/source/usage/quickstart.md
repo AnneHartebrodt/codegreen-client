@@ -69,18 +69,21 @@ your experiment. Looking like this:
 
 ```
 [codegreen]
+[codegreen]
 api_endpoint = http://localhost:5000/api/v1/data/
-api_key = super-secret-api-key
+api_key = my-super-secret-api-key
 experiment_name = my_experiment
-deadline = 1687349742.046546
+allowed_delay_hours = 24
 codecarbon_logfile = experiment.log
 nextflow_logfile = nextflow.log
-area_code = ES-9
+area_code = DE-9
 estimated_runtime_hours = 1
 estimated_runtime_minutes = 30
-percent_renewable = 10
+percent_renewable = 40
 log_request = True
-experiment_hash = b49c56c7-8f26-498f-88c5-f35417134757
+experiment_hash = be0ff372-42d7-4e14-a12c-a9ff915b4a52
+
+
 
 ```
 

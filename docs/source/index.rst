@@ -17,6 +17,9 @@ client. For more information on the web service please check out our web site at
 
    usage/installation
    usage/quickstart 
+   usage/locationshift
+   usage/data_download
+   usage/available_countries
 
 .. autosummary::
    :toctree: _autosummary
