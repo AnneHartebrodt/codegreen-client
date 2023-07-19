@@ -1,0 +1,55 @@
+2023-06-12 15:40:16	1.9s	suspicious_bassi	ERR	477b4a3ca93821a8471133fd4117a799	d730f905-a815-401a-93d3-57504201972d	nextflow hello.nf
+2023-06-12 15:40:35	1.7s	condescending_brenner	ERR	477b4a3ca93821a8471133fd4117a799	d395e772-8048-4d8c-9594-94be3178b1ad	nextflow hello.nf
+2023-06-12 15:41:02	1.6s	admiring_jepsen	ERR	477b4a3ca93821a8471133fd4117a799	44c53b52-3804-4216-b0c1-146670e42745	nextflow hello.nf
+2023-06-12 15:41:29	1.5s	disturbed_baekeland	ERR	477b4a3ca93821a8471133fd4117a799	e4ac3856-cb10-496a-9932-52736998a58f	nextflow hello.nf
+2023-06-12 15:41:44	1.4s	distracted_legentil	ERR	477b4a3ca93821a8471133fd4117a799	f3bd77b4-3abf-427e-b06c-c3d763287720	nextflow hello.nf
+2023-06-12 15:45:28	-	sad_easley	-	67b4b8ad4100138a1b297a42387c2be9	e37fdf66-992a-4110-acfd-5153c611aa09	nextflow hello.nf
+2023-06-12 15:45:46	-	compassionate_swanson	-	5e31dfda6291ca6cc669c09990fca497	0887824d-48b7-418e-b5fa-7e4f100afdd0	nextflow hello.nf
+2023-06-12 15:46:08	1.7s	peaceful_chandrasekhar	ERR	64c055b6bd5610dd164272ea02fad9b4	7e6c17e8-a372-4ec6-900b-9eaa88989478	nextflow hello.nf
+2023-06-12 15:48:09	1.8s	small_plateau	ERR	64c055b6bd5610dd164272ea02fad9b4	45363859-5dc9-4144-b8b6-67cda3238f7f	nextflow hello.nf
+2023-06-12 15:51:53	1.9s	ecstatic_church	ERR	64c055b6bd5610dd164272ea02fad9b4	94c02b2a-9e08-48b4-a561-90e4714c956a	nextflow hello.nf
+2023-06-12 15:53:01	9.1s	sleepy_ptolemy	ERR	64c055b6bd5610dd164272ea02fad9b4	40b5a1a0-d9c4-4093-89c6-024ff8f55d61	nextflow hello.nf
+2023-06-12 15:54:57	2s	special_hawking	ERR	64c055b6bd5610dd164272ea02fad9b4	49d8e156-7708-456d-9e02-96a627f93aaa	nextflow hello.nf
+2023-06-12 15:57:45	-	romantic_caravaggio	-	cc556680188fe616efc4b1ce3535fffd	af74349a-02e1-4b56-8103-ca3f12fec03b	nextflow hello.nf
+2023-06-12 15:59:02	1.6s	cranky_leavitt	ERR	c29c6a140322e0edf52cb9e5b3d64577	8d0d55a8-1a8c-423d-b894-aad7e545dcf7	nextflow hello.nf
+2023-06-12 16:00:04	2s	condescending_hawking	ERR	c29c6a140322e0edf52cb9e5b3d64577	09c6c9ea-90d7-4e3f-881c-68b00f375f07	nextflow hello.nf
+2023-06-12 16:00:47	1.5s	furious_darwin	ERR	c29c6a140322e0edf52cb9e5b3d64577	9dd92a2a-33d8-49b9-96bb-196b8ad430cc	nextflow hello.nf
+2023-06-12 16:02:08	2.1s	pedantic_mercator	ERR	c29c6a140322e0edf52cb9e5b3d64577	eef7f83a-0cbf-4579-91cf-c217e38d59f1	nextflow hello.nf
+2023-06-12 16:02:37	1.6s	sharp_lamarr	OK	c29c6a140322e0edf52cb9e5b3d64577	ec21ab14-bbc4-4011-9d41-4d0c200deda9	nextflow hello.nf
+2023-06-12 16:04:56	1.6s	sick_engelbart	OK	c78c71b750440732457573e045b87091	63ba4c67-0675-4b68-a969-ebffed522f76	nextflow hello.nf
+2023-06-12 16:05:31	-	romantic_lalande	-	3591062b8650dae507448b7fcee8d8ce	0bbfdfa5-ba47-40ac-bddf-3ee484c95bcf	nextflow hello.nf
+2023-06-12 16:26:06	-	prickly_ampere	-	50b0805a7c07c48e48162aa61cbe3da9	cc7e2a88-4a80-449f-b121-3199c8c18c4c	nextflow hello.nf
+2023-06-12 16:26:25	988ms	small_mayer	OK	50b0805a7c07c48e48162aa61cbe3da9	94323d8d-ff9e-41b3-a1c2-33817c21bd01	nextflow hello.nf
+2023-06-12 16:27:05	-	extravagant_rubens	-	58fae34793fc9afed5ba19c5ddefa167	519ecf02-37d6-4823-8f77-aade9f78fd1d	nextflow hello.nf
+2023-06-12 16:27:33	-	focused_venter	-	58fae34793fc9afed5ba19c5ddefa167	548e37eb-6acb-43b7-a85d-b3d6ee789b8b	nextflow hello.nf
+2023-06-12 16:27:54	1.8s	chaotic_fermi	OK	818bc2eceffef57eb0c4f2ee2c22516e	008a4dc9-9d7c-4684-87ee-feeaab334051	nextflow hello.nf
+2023-06-12 16:28:10	1.7s	clever_chandrasekhar	OK	9f5ca156c50fa9076111434b59b3571c	3843cf2c-de86-4a5e-9305-980999f79cae	nextflow hello.nf
+2023-06-12 16:28:39	1.2s	golden_lamport	OK	d05041255920e254ab2722c45bd5270e	e0107be2-8c09-4bb1-8fd4-7b92bcb1946e	nextflow hello.nf
+2023-06-12 16:35:32	1.7s	lonely_celsius	OK	d05041255920e254ab2722c45bd5270e	9fcacd98-0f39-42dc-bdee-1089bef89ca1	nextflow hello.nf --trace
+2023-06-12 16:36:38	1.7s	determined_spence	OK	d05041255920e254ab2722c45bd5270e	5feb1a72-e5d1-4cad-b785-c620ca96d561	nextflow hello.nf -with-trace
+2023-06-12 16:37:14	1.8s	maniac_cantor	OK	d05041255920e254ab2722c45bd5270e	cbcccfea-7de1-4752-9ffd-d2151b5ebc9b	nextflow hello.nf -with-trace tracefile.txt
+2023-06-12 16:56:46	-	angry_ramanujan	-	d05041255920e254ab2722c45bd5270e	fdf9602b-9e3e-453a-b8dd-916b2866ca18	nextflow hello.nf -with-trace tracefile.txt
+2023-06-12 16:56:53	2.3s	thirsty_brattain	OK	d05041255920e254ab2722c45bd5270e	1a188cb1-96b5-469e-beaa-186f87a25000	nextflow hello.nf -with-trace tracefile2.txt
+2023-06-12 16:57:13	-	furious_celsius	-	d05041255920e254ab2722c45bd5270e	aea30a37-d732-403c-9c46-9385cc1869d9	nextflow hello.nf -with-trace tracefile2.txt
+2023-06-12 16:57:17	11.6s	lonely_booth	OK	d05041255920e254ab2722c45bd5270e	0502d822-1a5e-4659-8640-eb31a059f8b3	nextflow hello.nf -with-trace tracefile3.txt
+2023-06-12 17:43:21	-	zen_yonath	-	d05041255920e254ab2722c45bd5270e	8187b642-eb25-45bc-9277-f7c77d201df8	nextflow hello.nf -with-trace tracefile3.txt
+2023-06-12 17:43:38	11.6s	insane_plateau	OK	d05041255920e254ab2722c45bd5270e	f94bcb3a-0537-46bd-9861-70358a8a5b13	nextflow hello.nf -with-trace tracefile4.txt
+2023-06-12 17:43:56	-	reverent_nobel	-	d05041255920e254ab2722c45bd5270e	005aa6a4-413f-4878-bf22-de8c14aa8841	nextflow hello.nf -with-trace tracefile4.txt
+2023-06-13 15:19:03	11.5s	lonely_carson	ERR	d05041255920e254ab2722c45bd5270e	8791f37e-145c-478e-abc2-90252167322e	nextflow hello.nf
+2023-06-13 15:20:21	11.9s	nasty_bassi	ERR	d05041255920e254ab2722c45bd5270e	1d435c7e-8456-4ab4-b22b-7fc76b99d467	nextflow hello.nf -with-trace
+2023-06-13 15:21:27	11.4s	amazing_jennings	ERR	d05041255920e254ab2722c45bd5270e	e79c4398-e7c3-4405-af8d-c2d169d3507c	nextflow hello.nf -with-trace
+2023-06-13 15:25:41	11.4s	romantic_hawking	ERR	d05041255920e254ab2722c45bd5270e	a507a11c-25f7-41d3-925a-e707169d88d5	nextflow hello.nf -with-trace
+2023-06-13 15:25:55	11.8s	awesome_ampere	ERR	d05041255920e254ab2722c45bd5270e	eaa1130c-2eaf-4589-8118-d2bab6dbfa42	nextflow hello.nf -with-trace
+2023-06-13 15:26:29	12.1s	sharp_avogadro	ERR	d05041255920e254ab2722c45bd5270e	f64adf25-0122-4725-836e-0b4d6092abb3	nextflow hello.nf -with-trace
+2023-06-13 15:28:51	11.5s	amazing_spence	OK	d05041255920e254ab2722c45bd5270e	4c27775e-8f03-41df-bebd-f4a59a3fbd65	nextflow hello.nf -with-trace
+2023-06-13 15:30:14	21.7s	cheeky_thompson	OK	d05041255920e254ab2722c45bd5270e	897bdf43-faa9-4f1f-9cfc-490470b3537b	nextflow hello.nf -with-trace
+2023-06-13 15:31:14	2m 2s	suspicious_dubinsky	OK	d05041255920e254ab2722c45bd5270e	666e260c-9d9d-43dc-9add-80476cd0dbf0	nextflow hello.nf -with-trace
+2023-06-13 17:55:26	-	awesome_gutenberg	-	d05041255920e254ab2722c45bd5270e	6f9598b4-9ef9-4c89-b75b-c392950173ac	nextflow hello.nf -with-trace
+2023-06-13 18:01:33	-	reverent_bohr	-	d05041255920e254ab2722c45bd5270e	d3a2c3fc-12ff-464a-851a-7692ad345ed5	nextflow hello.nf -with-trace
+2023-06-13 18:01:47	-	deadly_lamarr	-	d05041255920e254ab2722c45bd5270e	f497bcb4-aa75-49e6-8db4-a545367146ed	nextflow hello.nf -with-trace
+2023-06-13 18:01:49	-	clever_fermat	-	d05041255920e254ab2722c45bd5270e	b4606779-bd08-40b3-8124-c5de6cf0426e	nextflow hello.nf -with-trace
+2023-06-13 18:01:54	1m 6s	pensive_picasso	ERR	d05041255920e254ab2722c45bd5270e	ce94e319-f075-49a2-833c-5f0446641a59	nextflow hello.nf -with-trace
+2023-06-13 18:03:08	2m 2s	irreverent_edison	OK	d05041255920e254ab2722c45bd5270e	90ce7f6b-8816-4526-bc6b-c9d510cb61dd	nextflow hello.nf -with-trace
+2023-06-13 18:05:18	5m 51s	grave_wilson	ERR	d05041255920e254ab2722c45bd5270e	2b11a53b-4822-4910-b488-c81d84e80547	nextflow hello.nf -with-trace
+2023-06-13 18:08:24	2m 2s	reverent_perlman	OK	d05041255920e254ab2722c45bd5270e	c612fd91-9911-4024-a435-5b116045708d	nextflow -bg run hello.nf -with-trace
+2023-06-14 18:05:23	2m 2s	condescending_visvesvaraya	ERR	d05041255920e254ab2722c45bd5270e	d1258e80-a9e3-4b49-ad79-0116987f81a7	nextflow -bg run hello.nf -with-trace

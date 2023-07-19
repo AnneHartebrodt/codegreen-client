@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime, timezone
+from datetime import datetime
 import pandas as pd
 import requests
 from datetime import datetime  
@@ -12,14 +12,36 @@ from codegreen.utils import process_codecarbon_file
 from codegreen.expections import UnauthorizedException
 
 
-def get_prediction(estimated_runtime_hours = 1, 
-                   estimated_run_time_in_minutes=12,
-                   percent_renewable=40, 
-                   hard_finish_time = datetime.utcnow().replace(hour=18, minute=0, second=0).timestamp(),
-                   area_code = 'DE-79117',
-                   log_request = True, 
-                   process_id = None,
-                   experiment_name = None):
+def get_prediction(estimated_runtime_hours:int = 1, 
+                   estimated_run_time_in_minutes:int=12,
+                   percent_renewable:int=40, 
+                   hard_finish_time:datetime.timestamp = datetime.utcnow().replace(hour=18, minute=0, second=0).timestamp(),
+                   area_code:list[str] = ['DE'],
+                   log_request:bool = True, 
+                   process_id:str = None,
+                   experiment_name:str = None) -> requests.Response:
+    """Get a prediction for an optimal time given the specified parameters.
+
+    :param estimated_runtime_hours: Estimated run time in hours, defaults to 1
+    :type estimated_runtime_hours: int, optional
+    :param estimated_run_time_in_minutes: Estimated additional minutes of runtime, defaults to 12
+    :type estimated_run_time_in_minutes: int, optional
+    :param percent_renewable: Required percentage of renewable energy available in the grid at the time of computation, defaults to 40
+    :type percent_renewable: int, optional
+    :param hard_finish_time: deadline for when the computation needs to be finished, defaults to datetime.utcnow().replace(hour=18, minute=0, second=0).timestamp()
+    :type hard_finish_time: datetime.timestamp, optional
+    :param area_code: list of area codes with a two letter country code and an optional postal code separated by a dash. Postal codes can be given as 1-5 digit areas. ['CC-PPPPP', 'CC', 'CC-P'], defaults to ['DE']
+    :type area_code: list[str], optional
+    :param log_request: allow logging the request server side, this is required to compute the carbon offset, defaults to True
+    :type log_request: bool, optional
+    :param process_id: An string to identify the experiment, defaults to None
+    :type process_id: str, optional
+    :param experiment_name: Name of the experiment used to load the configuration. If none it will try to load a default configuration, defaults to None
+    :type experiment_name: str, optional
+    :raises UnauthorizedException: raised when the API key is invalid
+    :return: A response object representing the the prediction in the form of a json object, Example: {'optimal_start': 1689703307, 'message': 'No data available', 'avg_percentage_renewable': 0}
+    :rtype: requests.Response
+    """
     payload = {'estimated_runtime_hours': estimated_runtime_hours, 
                'estimated_runtime_minutes': estimated_run_time_in_minutes,
                'percent_renewable': percent_renewable,
@@ -38,9 +60,20 @@ def get_prediction(estimated_runtime_hours = 1,
         raise UnauthorizedException
 
 
-def submit_nf_resource_usage( trace_file, process_id, experiment_name = None): 
-    """
-    Submit the nextflow report
+def submit_nf_resource_usage(trace_file:str, process_id:str, experiment_name:str = None)-> requests.Response: 
+    """Upload the nextflow report in the trace file. Process id needs to be provided.
+    The experiment name can be used to use a specific experiment configuration. Otherwise the experiment
+    will be reported under the default settings. 
+
+    :param trace_file: Name of the nextflow trace file to upload.
+    :type trace_file: str
+    :param process_id: The process id to upload the nextflow report under. Can be used for scoped reporting within an API key scope.
+    :type process_id: str
+    :param experiment_name: Name of the experiment to report under, defaults to None
+    :type experiment_name: str, optional
+    :raises UnauthorizedException: will be raised if the API key is invalid or does not exist.
+    :return: The response of the server.
+    :rtype: requests.Response
     """
 
     API_URL = get_api_endpoint()
@@ -58,6 +91,24 @@ def submit_nf_resource_usage( trace_file, process_id, experiment_name = None):
 
 
 def submit_cc_resource_usage(trace_file, process_id, task_name, postal_code='DE-791',experiment_name = None):
+    """Upload the codecarbon report in the file specified. Process id needs to be provided.
+    The experiment name can be used to use a specific experiment configuration. Otherwise the experiment
+    will be reported under the default settings. 
+
+    :param trace_file: Name of the nextflow trace file to upload.
+    :type trace_file: str
+    :param process_id: The process id to upload the nextflow report under. Can be used for scoped reporting within an API key scope.
+    :type process_id: str
+    :param task_name: The name of the task to upload the nextflow report under
+    :type task_name: str
+    :param experiment_name: Name of the experiment to report under, defaults to None
+    :type experiment_name: str, optional
+    :param postal_code: Can be used to obfuscate the exact location.
+    :type postal_code: str
+    :raises UnauthorizedException: will be raised if the API key is invalid or does not exist.
+    :return: The response of the server.
+    :rtype: requests.Response
+    """
     
     API_URL = get_api_endpoint()
     API_KEY = get_api_key(experiment_name)
@@ -75,7 +126,20 @@ def submit_cc_resource_usage(trace_file, process_id, task_name, postal_code='DE-
         raise UnauthorizedException
 
 
-def get_data(submission_type, dump=False, experiment_name = None):
+def get_data(submission_type:str, dump:bool=False, experiment_name:str = None)-> pd.DataFrame:
+    """Retrieve the data submitted to the server. There are currently three options: the codecarbon logs,
+    the nextflow logs and the request log for all the requests made to the server.
+
+    :param submission_type: One of ['codecarbon', 'nextflow', 'requests']
+    :type submission_type: str
+    :param dump: Dump all data, can only be used in combination with an admin API key, defaults to False
+    :type dump: bool, optional
+    :param experiment_name: Name of the experiment to identify the configuration file by., defaults to None
+    :type experiment_name: str, optional
+    :raises UnauthorizedException: raised when no valid API key is submitted.
+    :return: Returns the data as a Dataframe
+    :rtype: pd.DataFrame
+    """
     
     API_URL = get_api_endpoint()
     API_KEY = get_api_key(experiment_name)
@@ -89,14 +153,38 @@ def get_data(submission_type, dump=False, experiment_name = None):
         raise UnauthorizedException
 
 def get_location_prediction(
-        estimated_runtime_hours = 1, 
-                   estimated_run_time_in_minutes=12,
-                   percent_renewable=40, 
-                   hard_finish_time = datetime.utcnow().replace(hour=18, minute=0, second=0).timestamp(),
-                   area_code = 'DE-79117',
-                   log_request = True, 
-                   process_id = None,
-                   experiment_name = None):
+        estimated_runtime_hours:int = 1, 
+                   estimated_run_time_in_minutes:int=12,
+                   percent_renewable:int=40, 
+                   hard_finish_time:datetime.timestamp = datetime.utcnow().replace(hour=24, minute=0, second=0).timestamp(),
+                   area_code:list[str] = ['DE','FR'],
+                   log_request:bool = True, 
+                   process_id:str = None,
+                   experiment_name:str = None)-> requests.Response:
+    """
+    Get a preddiction for the optimal location to perform the computation within the given time frame using the specified
+    percentage of renewable energy.
+
+    :param estimated_runtime_hours: Run time of the code in hours, defaults to 1
+    :type estimated_runtime_hours: int, optional
+    :param estimated_run_time_in_minutes: additional run time of the code in minutes, defaults to 12
+    :type estimated_run_time_in_minutes: int, optional
+    :param percent_renewable: required percentage of renewable energy in the grid at the time of computation, defaults to 40
+    :type percent_renewable: int, optional
+    :param hard_finish_time: Deadline for the termination of the code, defaults to datetime.utcnow().replace(hour=24, minute=0, second=0).timestamp() which is 24 ahead.
+    :type hard_finish_time: datetime.timestamp, optional
+    :param area_code: list of potential area codes for the computation, defaults to ['DE','FR']
+    :type area_code: list[str], optional
+    :param log_request: allow logging the request at the server side, defaults to True
+    :type log_request: bool, optional
+    :param process_id: process id to scope the project, defaults to None
+    :type process_id: str, optional
+    :param experiment_name: Name of the experiment to load the correct configuration, defaults to None
+    :type experiment_name: str, optional
+    :raises UnauthorizedException: Raised if no correct API key is submitted with the request.
+    :return: A response in for the request with the content in json format.
+    :rtype: requests.Response
+    """
     
     API_URL = get_api_endpoint()
     API_KEY = get_api_key(experiment_name)

@@ -38,10 +38,15 @@ def process_codecarbon_file(filename, process_id, task_name, postal_code)-> pd.D
     return data
 
 
-def get_configuration(experiment_name=None):
-    """
-    Returns the configuration dictionary from the file in the project
+def get_configuration(experiment_name:str=None)-> dict:
+    """utility function to load the configuration with the specified name. If no configuration with the specified
+    name is found then the default configuration will be used.
 
+    :param experiment_name: _description_, defaults to None
+    :type experiment_name: _type_, optional
+    :raises ConfigNotFoundException: raise when the requested Configuration is faulty.
+    :return: The dictionary containing the parameters specified in the configuration file.
+    :rtype: dict
     """
 
     CONFIG_NUMERIC = ['allowed_delay_hours', 'estimated_runtime_minutes', 'estimated_runtime_hours',
@@ -74,33 +79,41 @@ def get_configuration(experiment_name=None):
         except ConfigNotFoundException:
             raise ConfigNotFoundException('You must specify at least the API Key in an environment file called .codegreen.config'+ str(p))
 
-def write_config_file(experiment_name, 
-                      codecarbon_logfile, 
-                      nextflow_logfile,
-                      area_code, 
-                      estimated_runtime_hours =2,
-                      estimated_runtime_minutes= 30, 
-                      percent_renewable = 30,
-                      allowed_delay_hours = 24,
-                    log_request=True,
-                    overwrite=False):
+def write_config_file(experiment_name:str, 
+                      codecarbon_logfile:str, 
+                      nextflow_logfile:str,
+                      area_code:list[str], 
+                      estimated_runtime_hours:str =2,
+                      estimated_runtime_minutes:str= 30, 
+                      percent_renewable:int = 30,
+                      allowed_delay_hours:int = 24,
+                    log_request:bool=True,
+                    overwrite:bool=False):
+    """_summary_
+
+    :param experiment_name: Name of the experiment for the configuration file
+    :type experiment_name: str
+    :param codecarbon_logfile: Name of the codecarbon logfile
+    :type codecarbon_logfile: str
+    :param nextflow_logfile: Name of the nextflow logfile.
+    :type nextflow_logfile: str
+    :param area_code: list of area codes as a list of strings.
+    :type area_code: list[str]
+    :param estimated_runtime_hours: estimated run time in hours, defaults to 2
+    :type estimated_runtime_hours: str, optional
+    :param estimated_runtime_minutes: estimated additional number of hours run time, defaults to 30
+    :type estimated_runtime_minutes: str, optional
+    :param percent_renewable:, defaults to 30
+    :type percent_renewable: int, optional
+    :param allowed_delay_hours: _description_, defaults to 24
+    :type allowed_delay_hours: int, optional
+    :param log_request: _description_, defaults to True
+    :type log_request: bool, optional
+    :param overwrite: _description_, defaults to False
+    :type overwrite: bool, optional
+    :return: _description_
+    :rtype: _type_
     """
-    This writes a configuration file for an experiment with the following arguments:
-    If available, the base configuration file will be read and used to fill the configuration
-
-
-    :param experiment_name: The name of the experiment
-    :param codecarbon_filename: Name of the codecarbon logfile
-    :param area_code: The area codes as a list
-    :param estimated_runtime_hours: Estimated runtime in hours
-    :param estimated_runtime_minutes: estimated run time in minutes
-    :param percent_renewable: requested percentage of renewables
-    :param allowed_delay_hours: Allowed delay of computation
-    :param log_request: True if request can be logged.
-
-    Returns True if the configuration file is successfully written
-    """
-    # get default configuration
 
     config = get_configuration(experiment_name=experiment_name)
 
