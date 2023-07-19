@@ -17,7 +17,14 @@ client. For more information on the web service please check out our web site at
 
    usage/installation
    usage/quickstart 
-   api
+
+.. autosummary::
+   :toctree: _autosummary
+
+   codegreen.decorators
+   codegreen.queries
+
+
 
 
 

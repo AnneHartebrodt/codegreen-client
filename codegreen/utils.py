@@ -89,7 +89,7 @@ def write_config_file(experiment_name:str,
                       allowed_delay_hours:int = 24,
                     log_request:bool=True,
                     overwrite:bool=False):
-    """_summary_
+    """Write a configuration file
 
     :param experiment_name: Name of the experiment for the configuration file
     :type experiment_name: str

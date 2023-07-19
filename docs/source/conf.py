@@ -10,6 +10,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'code-green-client'
@@ -36,15 +40,17 @@ myst_enable_extensions = ["colon_fence"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
-
-
+exclude_patterns = ['_build', '_templates']
+autodoc_default_options = {
+    'members': True,
+}
+autodoc_typehints = "description"
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'furo'
+#html_theme = 'classic'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

@@ -43,4 +43,4 @@ def get_api_key(myexperiment:str = None)-> str:
             d = dict(config["codegreen"])
             if "api_key" in d:
                 return d["api_key"]
-    return None
+    return ""

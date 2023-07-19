@@ -156,7 +156,7 @@ def get_location_prediction(
         estimated_runtime_hours:int = 1, 
                    estimated_run_time_in_minutes:int=12,
                    percent_renewable:int=40, 
-                   hard_finish_time:datetime.timestamp = datetime.utcnow().replace(hour=24, minute=0, second=0).timestamp(),
+                   hard_finish_time:datetime.timestamp = datetime.utcnow().replace(hour=23, minute=0, second=0).timestamp(),
                    area_code:list[str] = ['DE','FR'],
                    log_request:bool = True, 
                    process_id:str = None,
