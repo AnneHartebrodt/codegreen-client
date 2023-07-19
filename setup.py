@@ -19,6 +19,8 @@ INSTALL_REQUIRES = [
     "pandas",
     "numpy",
     "codecarbon",
+    "sphinx",
+    "myst_parser"
 
     
 ]
