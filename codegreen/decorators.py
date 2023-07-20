@@ -177,10 +177,10 @@ def upload_cc_report(experiment_name: str):
 
 def init_experiment(
     experiment_name:str,
-    nextflow_logfile:str,
-    area_code: list[str],
-    estimated_runtime_hours:int,
-    estimated_runtime_minutes:int,
+    nextflow_logfile:str=None,
+    area_code: list[str] = ['DE-9'],
+    estimated_runtime_hours:int=2,
+    estimated_runtime_minutes:int=40,
     codecarbon_logfile:str='emissions.csv',
     percent_renewable:int=30,
     allowed_delay_hours:int=24,
