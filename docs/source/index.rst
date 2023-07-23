@@ -23,6 +23,7 @@ client. For more information on the web service please check out our web site at
 
 .. autosummary::
    :toctree: _autosummary
+   :caption: API
 
    codegreen.decorators
    codegreen.queries

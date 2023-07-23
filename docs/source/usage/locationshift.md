@@ -1,4 +1,4 @@
-# Locationshift computation
+# Locationshift
 
 We are not able to locationshift the computation as easily as we can timeshift. For completeness, we allow users to compute the best country for their computation within a given time frame.
 

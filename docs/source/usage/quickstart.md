@@ -1,4 +1,4 @@
-# Usage
+# Timeshift
 
 ## tldr;
 
@@ -11,10 +11,29 @@ api_endpoint = https://codegreen.world/api/v1/data
 api_key =  super-secret-api-key
 ```
 
+You also need to configure the codecarbon tracking.
+```.codecarbon.config```
+```
+[codecarbon]
+tracking_mode = process
+save_to_file = true
+measure_power_secs=10
+```
+
+
+
+Load the required packages
+```python
+from codegreen.decorators import init_experiment, time_shift, upload_cc_report
+from codecarbon import track_emissions
+from codegreen.queries import get_location_prediction, get_data
+import numpy as np
+from datetime import datetime
+```
+
 Initialize the experiment file using your custom parameters, timeshift the computation, upload the report
 and track your ressource usage.
-
-```python
+```
 @init_experiment(estimated_runtime_hours=1,
                 estimated_runtime_minutes=30,percent_renewable=10,allowed_delay_hours=24,area_code="ES-9",log_request=True,experiment_name="my_experiment",codecarbon_logfile="experiment.log",nextflow_logfile="nextflow.log",overwrite=False)
 @time_shift("my_experiment")
@@ -24,7 +43,7 @@ def hello_random_matrix_generator():
         for _ in range(1000):
             np.random.random((1000, 1000))
 ```
-or you can write the configuration yourself and load it in the init decorator ():
+Alternatively, you can write the configuration yourself and load it in the ```init_decorator("my_experiment")``` method using the correct file name.
 
 ```.my_experiment.codegreen.config```
 ```
@@ -71,12 +90,20 @@ You can also use this configuration file to configure your project parameters. (
 api_endpoint = https://codegreen.world/api/v1/data
 api_key =  super-secret-api-key
 ```
+
+You also need to configure the codecarbon tracking.
+```.codecarbon.config```
+```
+[codecarbon]
+tracking_mode = process
+save_to_file = true
+measure_power_secs=10
+```
 ## Decorators
 The easiest way to timeshift your computation is to add the decorator to your code.
 
 Let's say you want to do a lengthy computation like a simulation or training of a neural network.
 You main training loop needs to be implemented in a function that can be decorated.
-
 
 ```python
 def hello_random_matrix_generator():

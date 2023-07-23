@@ -9,7 +9,7 @@ from urllib.parse import urljoin
 from codegreen.config import get_api_endpoint, get_api_key
 from codegreen.utils import process_codecarbon_file
 
-from codegreen.expections import UnauthorizedException
+from codegreen.expections import UnauthorizedException, InternalServerErrorException
 
 
 def get_prediction(estimated_runtime_hours:int = 1, 
@@ -50,14 +50,16 @@ def get_prediction(estimated_runtime_hours:int = 1,
                 'log_request' : log_request,
                 'process_id': process_id}
     
-    API_URL = get_api_endpoint()
+    API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
     r = requests.post(urljoin(API_URL, 'forecast/timeshift'), json=payload, headers=AUTHORIZATION_HEADER)
     if r.status_code == 200:
         return r
-    else:
+    if r.status_code == 401:
         raise UnauthorizedException
+    else:
+        raise InternalServerErrorException
 
 
 def submit_nf_resource_usage(trace_file:str, process_id:str, experiment_name:str = None)-> requests.Response: 
@@ -76,7 +78,7 @@ def submit_nf_resource_usage(trace_file:str, process_id:str, experiment_name:str
     :rtype: requests.Response
     """
 
-    API_URL = get_api_endpoint()
+    API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
     data = pd.read_csv(trace_file, sep='\t')
@@ -110,7 +112,7 @@ def submit_cc_resource_usage(trace_file, process_id, task_name, postal_code='DE-
     :rtype: requests.Response
     """
     
-    API_URL = get_api_endpoint()
+    API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
     data = process_codecarbon_file(trace_file, 
@@ -141,7 +143,7 @@ def get_data(submission_type:str, dump:bool=False, experiment_name:str = None)->
     :rtype: pd.DataFrame
     """
     
-    API_URL = get_api_endpoint()
+    API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
 
@@ -186,8 +188,10 @@ def get_location_prediction(
     :rtype: requests.Response
     """
     
-    API_URL = get_api_endpoint()
+    API_URL = get_api_endpoint(experiment_name)
+    print(API_URL)
     API_KEY = get_api_key(experiment_name)
+    print(API_KEY)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
     payload = {'estimated_runtime_hours': estimated_runtime_hours, 
                'estimated_runtime_minutes': estimated_run_time_in_minutes,
