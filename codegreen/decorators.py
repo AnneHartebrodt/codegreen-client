@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from http import HTTPStatus
 import time
 from dateutil import tz
-from codegreen.utils import get_configuration, write_config_file
+from codegreen.config import get_configuration, write_config_file
 from codegreen.queries import submit_cc_resource_usage, get_prediction, submit_nf_resource_usage, get_data, get_location_prediction
 from codegreen.expections import UnauthorizedException, InternalServerErrorException
 from codegreen.config import get_api_endpoint, get_api_key

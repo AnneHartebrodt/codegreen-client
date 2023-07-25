@@ -1,5 +1,5 @@
 
-#Shamelessly copied from the codecarbon project
+#Adapted from the codecarbon project
 
 import configparser
 from pathlib import Path
