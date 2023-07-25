@@ -5,6 +5,7 @@ import configparser
 from pathlib import Path
 from codegreen.logger import logger
 from codegreen.expections import ConfigNotFoundException
+import os.path as op
 
 def get_api_endpoint(myexperiment:str = None)->str:
     """ Utility code to load the API enpoint from the configuration file.
