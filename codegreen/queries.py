@@ -7,7 +7,7 @@ import pandas as pd
 from urllib.parse import urljoin
 
 from codegreen.config import get_api_endpoint, get_api_key
-from codegreen.utils import process_codecarbon_file
+from codegreen.config import process_codecarbon_file
 
 from codegreen.expections import UnauthorizedException, InternalServerErrorException
 
@@ -54,6 +54,7 @@ def get_prediction(estimated_runtime_hours:int = 1,
     API_KEY = get_api_key(experiment_name)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
     r = requests.post(urljoin(API_URL, 'forecast/timeshift'), json=payload, headers=AUTHORIZATION_HEADER)
+    print(r.headers)
     if r.status_code == 200:
         return r
     if r.status_code == 401:
@@ -151,8 +152,10 @@ def get_data(submission_type:str, dump:bool=False, experiment_name:str = None)->
     if r.status_code == 200:
         data = pd.DataFrame(r.json()['data'])
         return data
-    else:
+    if r.status_code == 401:
         raise UnauthorizedException
+    else:
+        raise InternalServerErrorException
 
 def get_location_prediction(
         estimated_runtime_hours:int = 1, 

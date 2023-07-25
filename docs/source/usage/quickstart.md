@@ -33,7 +33,7 @@ from datetime import datetime
 
 Initialize the experiment file using your custom parameters, timeshift the computation, upload the report
 and track your ressource usage.
-```
+```python
 @init_experiment(estimated_runtime_hours=1,
                 estimated_runtime_minutes=30,percent_renewable=10,allowed_delay_hours=24,area_code="ES-9",log_request=True,experiment_name="my_experiment",codecarbon_logfile="experiment.log",nextflow_logfile="nextflow.log",overwrite=False)
 @time_shift("my_experiment")
