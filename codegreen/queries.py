@@ -7,7 +7,7 @@ import pandas as pd
 from urllib.parse import urljoin
 
 from codegreen.config import get_api_endpoint, get_api_key
-from codegreen.config import process_codecarbon_file
+from codegreen.utils import process_codecarbon_file
 
 from codegreen.expections import UnauthorizedException, InternalServerErrorException
 
