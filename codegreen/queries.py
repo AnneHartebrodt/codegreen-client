@@ -1,15 +1,13 @@
-import requests
 from datetime import datetime
-import pandas as pd
-import requests
-from datetime import datetime  
-import pandas as pd
 from urllib.parse import urljoin
 
-from codegreen.config import get_api_endpoint, get_api_key
-from codegreen.utils import process_codecarbon_file
+import pandas as pd
+import requests
 
-from codegreen.expections import UnauthorizedException, InternalServerErrorException
+from codegreen.config import get_api_endpoint, get_api_key
+from codegreen.expections import (InternalServerErrorException,
+                                  UnauthorizedException)
+from codegreen.utils import process_codecarbon_file
 
 
 def get_prediction(estimated_runtime_hours:int = 1, 
@@ -52,7 +50,7 @@ def get_prediction(estimated_runtime_hours:int = 1,
     
     API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
-    AUTHORIZATION_HEADER = {'Authorization': API_KEY}
+    AUTHORIZATION_HEADER = {'Authorization': API_KEY, 'content-type': 'application/json'}
     r = requests.post(urljoin(API_URL, 'forecast/timeshift'), json=payload, headers=AUTHORIZATION_HEADER)
     print(r.headers)
     if r.status_code == 200:
@@ -63,7 +61,11 @@ def get_prediction(estimated_runtime_hours:int = 1,
         raise InternalServerErrorException
 
 
-def submit_nf_resource_usage(trace_file:str, process_id:str, experiment_name:str = None)-> requests.Response: 
+
+
+
+
+def submit_nf_resource_usage(trace_file:str, experiment_id:str, task_name:str, experiment_name:str = None)-> requests.Response: 
     """Upload the nextflow report in the trace file. Process id needs to be provided.
     The experiment name can be used to use a specific experiment configuration. Otherwise the experiment
     will be reported under the default settings. 
@@ -80,17 +82,30 @@ def submit_nf_resource_usage(trace_file:str, process_id:str, experiment_name:str
     """
 
     API_URL = get_api_endpoint(experiment_name)
+    print(API_URL)
     API_KEY = get_api_key(experiment_name)
+    print(API_KEY)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
     data = pd.read_csv(trace_file, sep='\t')
-    data['process_id'] = process_id
-    data = data.to_json()
+    data['task_name'] = task_name
+
+    data['process_id'] = experiment_id
+
+    data.columns = data.columns.str.replace(r"%", "percent_")
+    print(data)
+    data = data.to_json(orient='records')
     payload = {'submission_type': 'nextflow', 'data': data}
     r = requests.post(urljoin(API_URL, 'reporting'), json=payload, headers=AUTHORIZATION_HEADER)
+    
     if r.status_code == 200:
         return r
     else:
-        raise UnauthorizedException
+        return r
+    
+#submit_nf_resource_usage('/home/bionets-og86asub/Documents/greenerai/greenerai-client/nf-module/trace-20230614-65123194.txt', task_name='nextflow', experiment_id = 'hashhhhh', experiment_name='my_local_experiment')
+
+
+
 
 
 def submit_cc_resource_usage(trace_file, process_id, task_name, postal_code='DE-791',experiment_name = None):
@@ -147,15 +162,20 @@ def get_data(submission_type:str, dump:bool=False, experiment_name:str = None)->
     API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
     AUTHORIZATION_HEADER = {'Authorization': API_KEY}
+    print(API_URL)
 
     r = requests.get(urljoin(API_URL,'data'), headers=AUTHORIZATION_HEADER, params={'submission_type': submission_type, 'dump': dump})
+    print(r)
     if r.status_code == 200:
         data = pd.DataFrame(r.json()['data'])
         return data
+    else:
+        print(r)
     if r.status_code == 401:
         raise UnauthorizedException
     else:
         raise InternalServerErrorException
+
 
 def get_location_prediction(
         estimated_runtime_hours:int = 1, 
