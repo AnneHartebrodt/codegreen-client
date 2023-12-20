@@ -27,7 +27,7 @@ You can clone our github repository and install the codegreen client package loc
 ```
 conda create -n codegreen
 conda activate codegreen
-git clone git@github.com:AnneHartebrodt/codegreen-client.git
+git clone https://github.com/AnneHartebrodt/codegreen-client
 cd codegreen-client
 pip install .
 ```

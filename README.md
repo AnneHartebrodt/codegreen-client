@@ -16,7 +16,7 @@ The workflow interfaces should allow the same functionalitities as in 1) but str
 
 We are actively developing the tools, for now you can install the code locally as a pip package.
 ```
-git clone git@github.com:AnneHartebrodt/codegreen-client.git
+git clone https://github.com/AnneHartebrodt/codegreen-client
 cd codegreen
 pip install -e .
 ```
