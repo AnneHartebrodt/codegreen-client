@@ -3,8 +3,6 @@
 
 import configparser
 from pathlib import Path
-from uuid import uuid4
-
 from codegreen.logger import logger
 from codegreen.expections import ConfigNotFoundException
 import os.path as op

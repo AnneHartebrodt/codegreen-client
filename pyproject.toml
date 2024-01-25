@@ -1,10 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0",    
-    "requests",
-    "pandas",
-    "numpy",
-    "codecarbon"]
-    
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -15,13 +10,39 @@ authors = [
 ]
 description = "Codegreen -- make your computations carbon-aware"
 readme = "README.md"
-requires-python = ">=3.7"
+"requires-python" = ">=3.7"
+dependencies = [
+    "requests",
+    "pandas",
+    "numpy",
+    "codecarbon",
+    "sphinx",
+    "myst-parser"
+]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 
+["project"."optional-dependencies"]
+dev = [
+    "black",
+    "flake8==3.7.9",
+    "pre-commit",
+    "pydocstyle",
+    "pytest",
+    "pytest-black",
+    "pytest-clarity",
+    "pytest-dotenv",
+    "pytest-flake8",
+    "pytest-flask",
+    "tox"
+    ]
+
+
 [project.urls]
-"Homepage" = "https://codegreen.world"
+Homepage = "https://codegreen.world"
+Documentation = "https://codegreen.world/documentation"
 "Bug Tracker" = "https://github.com/AnneHartebrodt/codegreen-client/issues"
+"Source Code" = "https://github.com/AnneHartebrodt/codegreen-client"
