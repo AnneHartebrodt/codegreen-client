@@ -50,9 +50,10 @@ def get_prediction(estimated_runtime_hours:int = 1,
     
     API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
-    AUTHORIZATION_HEADER = {'Authorization': API_KEY, 'content-type': 'application/json'}
+    AUTHORIZATION_HEADER = {'Authorization': f'Bearer {API_KEY}', 'content-type': 'application/json'}
     r = requests.post(urljoin(API_URL, 'forecast/timeshift'), json=payload, headers=AUTHORIZATION_HEADER)
     print(r.headers)
+    print(r.request)
     if r.status_code == 200:
         return r
     if r.status_code == 401:
@@ -135,6 +136,7 @@ def submit_cc_resource_usage(trace_file, process_id, task_name, postal_code='DE-
                                    process_id= process_id,
                                    task_name=task_name,
                                     postal_code=postal_code)
+    print(data)
     data = data.to_json()
     payload = {'submission_type': 'codecarbon', 'data': data}
     r = requests.post(urljoin(API_URL,'reporting'), json=payload, headers=AUTHORIZATION_HEADER)
@@ -161,7 +163,8 @@ def get_data(submission_type:str, dump:bool=False, experiment_name:str = None)->
     
     API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
-    AUTHORIZATION_HEADER = {'Authorization': API_KEY}
+    AUTHORIZATION_HEADER = {'Authorization': f'Bearer {API_KEY}', 'content-type': 'application/json'}
+
     print(API_URL)
 
     r = requests.get(urljoin(API_URL,'data'), headers=AUTHORIZATION_HEADER, params={'submission_type': submission_type, 'dump': dump})
@@ -169,12 +172,6 @@ def get_data(submission_type:str, dump:bool=False, experiment_name:str = None)->
     if r.status_code == 200:
         data = pd.DataFrame(r.json()['data'])
         return data
-    else:
-        print(r)
-    if r.status_code == 401:
-        raise UnauthorizedException
-    else:
-        raise InternalServerErrorException
 
 
 def get_location_prediction(
@@ -223,10 +220,10 @@ def get_location_prediction(
                 'area_code' : area_code,
                 'log_request' : log_request,
                 'process_id': process_id}
+
     print(payload)
     r = requests.post(urljoin(API_URL, 'forecast/locationshift'), json=payload, headers=AUTHORIZATION_HEADER)
     if r.status_code == 200:
         return r
-    else:
-        raise UnauthorizedException
-    
+
+    return r

@@ -12,7 +12,7 @@ class Message(Enum):
     
 
 API_URL = "http://127.0.0.1:5000/api/v1/data/forecast/timeshift"
-JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODk2OTc4MDEsInN1YiI6ImE3NjAyNDJkLTZjMTAtNDdlNy1iNTkxLWNkYjUxYzc5NmY1YyIsInNjb3BlIjoiIn0.btbNWux6Moxz7MbraCznuD5Qzl6pHMfoCIsj7nIUxeY"
+JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDE2ODI2NjcsInN1YiI6IjJkMmMxOTUzLTJmZDktNDdhYy04NDYyLTNlOWY0OWEwZTAwOCIsInNjb3BlIjoiaGFya2FuIn0.SzHN8EGhYbwqcBB4Sgdmt3Jus-VSMuhhkWMvIchpMjs"
 SLEEP_DURATION = 5
 
 test_data = [
