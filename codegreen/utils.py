@@ -4,8 +4,8 @@ import configparser
 from pathlib import Path
 import os.path as op
 from datetime import datetime, timedelta
-import time
-from uuid import uuid4
+
+
 
 
 def process_codecarbon_file(filename, process_id, task_name, postal_code)-> pd.DataFrame:

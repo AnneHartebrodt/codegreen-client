@@ -4,7 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "codegreen"
-version = "0.0.1"
 authors = [
   { name="Anne Hartebrodt", email="anne.hartebrodt@fau.de" },
 ]
@@ -19,11 +18,12 @@ dependencies = [
     "sphinx",
     "myst-parser"
 ]
+license = {file = "LICENSE.md"}
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dynamic = ["version"]
 
 ["project"."optional-dependencies"]
 dev = [
@@ -39,7 +39,6 @@ dev = [
     "pytest-flask",
     "tox"
     ]
-
 
 [project.urls]
 Homepage = "https://codegreen.world"
