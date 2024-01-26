@@ -24,8 +24,8 @@ def get_api_endpoint(myexperiment:str = None)->str:
         if "codegreen" in config.sections():
             d = dict(config["codegreen"])
             if "api_endpoint" in d:
-                return d["api_endpoint"]
-    return "https://codegreen.world/api/v1"
+                return d["api_endpoint"]+'/'
+    return "https://codegreen.world/api/v1/data/"
 
 def get_api_key(myexperiment:str = None)-> str:
     """Get the API key from the configuration file.
