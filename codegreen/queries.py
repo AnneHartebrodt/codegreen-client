@@ -51,15 +51,22 @@ def get_prediction(estimated_runtime_hours:int = 1,
     API_URL = get_api_endpoint(experiment_name)
     API_KEY = get_api_key(experiment_name)
     AUTHORIZATION_HEADER = {'Authorization': f'Bearer {API_KEY}', 'content-type': 'application/json'}
+    print(urljoin(API_URL, 'forecast/timeshift'))
     r = requests.post(urljoin(API_URL, 'forecast/timeshift'), json=payload, headers=AUTHORIZATION_HEADER)
+    print('HEader')
     print(r.headers)
-    print(r.request)
+    print('REquest')
+    print(r.status_code)
     if r.status_code == 200:
+        print('Returning object')
         return r
     if r.status_code == 401:
+        print('Unauthorized')
         raise UnauthorizedException
-    else:
+    if r.status_code == 500:
         raise InternalServerErrorException
+    else:
+        print(r.status_code)
 
 
 
@@ -139,6 +146,7 @@ def submit_cc_resource_usage(trace_file, process_id, task_name, postal_code='DE-
     print(data)
     data = data.to_json()
     payload = {'submission_type': 'codecarbon', 'data': data}
+    print(urljoin(API_URL, 'forecast/locationshift'))
     r = requests.post(urljoin(API_URL,'reporting'), json=payload, headers=AUTHORIZATION_HEADER)
     if (r.status_code == 200 or r.status_code == 201):
         return r
@@ -222,6 +230,7 @@ def get_location_prediction(
                 'process_id': process_id}
 
     print(payload)
+    print(urljoin(API_URL, 'forecast/locationshift'))
     r = requests.post(urljoin(API_URL, 'forecast/locationshift'), json=payload, headers=AUTHORIZATION_HEADER)
     if r.status_code == 200:
         return r
