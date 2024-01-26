@@ -23,6 +23,7 @@ def time_shift(experiment_name: str):
     def actual_decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
+            print(experiment_name)
             config = get_configuration(experiment_name)
             hard_finish_time =(datetime.now() + timedelta(hours=config['allowed_delay_hours'])).timestamp()
             print(config)
@@ -94,6 +95,7 @@ def sleep_until(
             process_id,
             experiment_name
         )
+        print(r.status_code)
         if r.status_code == HTTPStatus.UNAUTHORIZED:
             raise UnauthorizedException
         if r.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:

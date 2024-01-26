@@ -16,3 +16,9 @@ class ConfigNotFoundException(Exception):
     """
     Raised when the configuration is not found
     """
+
+
+class AreaCodeMisconfiguredException(Exception):
+    """
+    Raised when the configuration is not found
+    """
